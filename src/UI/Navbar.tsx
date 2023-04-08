@@ -17,16 +17,16 @@ export default function Navbar () {
                 <LogoSVG className={"w-24"}/>
             </div>
             <div className="absolute top-10 left-24 sm:left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <Link href={"/"}><span className="font-bold text-2xl sm:text-3xl tracking-tight">CoffeeWatch</span></Link>
+                <Link href={"/"}><span className="font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight">CoffeeWatch</span></Link>
             </div>
-            <div className={"block lg:hidden"}>
+            <div className={"block"}>
                 <button onClick={dropdownHandler}>
                     <HamburgerSVG width={35}/>
                 </button>
             </div>
             {isDroppedDown ?
-                <div className="block w-full flex-grow lg:flex lg:items-center lg:w-auto text-center pt-2 px-0">
-                <div className="text-md lg:flex-grow m-0">
+                <div className="block w-full flex-grow text-center text-md sm:text-l md:text-xl pt-2 px-0">
+                <div className="lg:flex-grow m-0">
                     <div className={"hover:border hover:border-cw_tan"}>
                         <a href="#" className="block m-2 lg:inline-block lg:mt-0 hover:text-cw_orange">
                             About Us
