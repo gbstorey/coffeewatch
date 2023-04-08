@@ -18,3 +18,11 @@ body {
             rgb(var(--background-end-rgb))
     ) no-repeat;
 }
+
+input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #4F200D;
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+}
