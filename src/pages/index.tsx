@@ -3,7 +3,7 @@ import Layout from "@/UI/Layout";
 import {NextPageWithLayout} from "@/pages/_app";
 
 const Page: NextPageWithLayout = () => {
-    return <p> Hello World </p>
+    return <></>
 }
 
 Page.getLayout = function getLayout(page: ReactElement) {
