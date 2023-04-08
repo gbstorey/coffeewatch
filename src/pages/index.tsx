@@ -1,6 +1,17 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-    </main>
-  )
+import type {ReactElement} from "react";
+import Layout from "@/UI/Layout";
+import {NextPageWithLayout} from "@/pages/_app";
+
+const Page: NextPageWithLayout = () => {
+    return <p> Hello World </p>
 }
+
+Page.getLayout = function getLayout(page: ReactElement) {
+    return (
+        <Layout>
+            {page}
+        </Layout>
+    )
+}
+
+export default Page
