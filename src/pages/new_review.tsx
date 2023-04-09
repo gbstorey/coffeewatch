@@ -1,5 +1,5 @@
 import {NextPageWithLayout} from "./_app";
-import {ReactElement, useState} from "react";
+import React, {ReactElement, useState} from "react";
 import Layout from "../UI/Layout";
 import {addDoc, collection, DocumentData} from 'firebase/firestore'
 
@@ -12,7 +12,7 @@ const Page: NextPageWithLayout = () => {
         name: '', desc: '', numStars: 5, acidity: 5, aroma: 5, body: 5, flavor: 5, sweetness: 5, timestamp: Date.now()
     }
     const [inputs, setInputs] = useState(initialState);
-    const submissionHandler = (e) => {
+    const submissionHandler = (e: React.SyntheticEvent) => {
         setInputs(values => ({...values, timestamp: Date.now()}))
         e.preventDefault()
         addDoc(dbInstance, {
@@ -22,9 +22,9 @@ const Page: NextPageWithLayout = () => {
             alert("Review submitted!")
         })
     }
-    const changeHandler = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
+    const changeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+        const name = e.currentTarget.name;
+        const value = e.currentTarget.value;
         setInputs(values => ({...values, [name]: value}))
     }
     return (
