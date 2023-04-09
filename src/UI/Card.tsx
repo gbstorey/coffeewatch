@@ -1,6 +1,8 @@
 import StarSVG from "@/assets/StarSVG";
 import React from "react";
 
+// TODO: Adjust score display on mobile.
+
 interface Review {
         name: string, desc: string, numStars: number, acidity: number, aroma: number, body: number, flavor: number,
         sweetness: number, timestamp: number, id: string
@@ -17,14 +19,14 @@ const Card : React.FC<Review> = (props: Review) => {
                         {props.desc}
                     </p>
                 </div>
-                <div className={"text-right"}>
+                <div className={"text-right ml-2"}>
                     {stars.map((item, num) => {
                         return <StarSVG width={30} key={num} className={"inline transform -translate-y-1"}/>
                     })} <br/>
-                    <span>{props.timestamp}</span>
+                    <span className={"text-sm sm:text-lg"}>{props.timestamp}</span>
                 </div>
             </div>
-            <div className={"flex justify-between text-sm font-semibold w-2/3"}>
+            <div className={"flex flex-wrap gap-x-2 md:flex justify-start text-sm font-semibold w-2/3"}>
                 <span>Acidity: {props.acidity}</span>
                 <span>Aroma: {props.aroma}</span>
                 <span>Body: {props.body}</span>

@@ -18,9 +18,8 @@ type ReviewArray = {
 }
 
 const Page: NextPageWithLayout<ReviewArray> = ({reviews}:ReviewArray) => {
-    console.log(reviews)
     return (
-        <div className={"h-screen text-center text-2xl px-3"}>
+        <div className={"text-center text-2xl px-3 md:max-w-2xl md:mx-auto"}>
             <h2 className={"font-semibold text-cw_brown py-4"}>
                 Independent, authentic reviews written by coffee enthusiasts like you.
             </h2>
@@ -30,9 +29,11 @@ const Page: NextPageWithLayout<ReviewArray> = ({reviews}:ReviewArray) => {
                 "transition-all ease-in-out duration-300 hover:bg-cw_yellow border cursor-pointer"}>
                 Submit a Review
             </a>
+            <div className={"pt-6"}>
             {reviews.map((item, num) => {
                 return <Card key={num} {...item} />
             })}
+            </div>
         </div>
     )
 }

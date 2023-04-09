@@ -37,7 +37,7 @@ const Page: NextPageWithLayout = () => {
         setInputs(values => ({...values, [name]: value}))
     }
     return (
-        <div className={"w-1/2 text-left text-sm bg-white border border-black rounded p-2"}>
+        <div className={"w-full my-6 md:max-w-2xl md:mx-auto text-left text-sm bg-white border border-black rounded p-2"}>
             <form onSubmit={submissionHandler} method={"POST"}>
                 <label className={"flex-1 block py-2"} htmlFor={"name"}>
                     Name
