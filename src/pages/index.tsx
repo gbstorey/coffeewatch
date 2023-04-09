@@ -1,10 +1,10 @@
 import type {ReactElement} from "react";
 import {NextPageWithLayout} from "./_app";
-import Layout from "@/UI/Layout";
-import Card from "@/UI/Card";
-import { collection, getDocs } from 'firebase/firestore'
+import Layout from "../ui/Layout";
+import Card from "../ui/Card";
+import {collection, getDocs} from 'firebase/firestore'
 import { db } from "../../firebaseConfig"
-import {InferGetStaticPropsType} from "next";
+import {GetStaticProps} from "next";
 
 const dbInstance = collection(db, 'reviews')
 
@@ -13,7 +13,12 @@ interface Review {
     sweetness: number, timestamp: number, id: string
 }
 
-const Page: NextPageWithLayout = ({reviews}:InferGetStaticPropsType<typeof getStaticProps>) => {
+type ReviewArray = {
+    'reviews': Review[]
+}
+
+const Page: NextPageWithLayout<ReviewArray> = ({reviews}:ReviewArray) => {
+    console.log(reviews)
     return (
         <div className={"h-screen text-center text-2xl px-3"}>
             <h2 className={"font-semibold text-cw_brown py-4"}>
@@ -32,20 +37,20 @@ const Page: NextPageWithLayout = ({reviews}:InferGetStaticPropsType<typeof getSt
     )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (context) => {
     return await getDocs(dbInstance).then((data) => {
         const reviews = data.docs.map(item => {
-            return {...item.data(), id: item.id} as Review[]
+            return {...item.data(), id: item.id}
         })
+        console.log(reviews)
         return {
             props: {
-                reviews,
+                reviews
             }
-        }})
-        .catch(err => {
-            console.log(err);
-    })
-}
+        }}
+    )
+};
+
 
 Page.getLayout = function getLayout(page: ReactElement) {
     return (
