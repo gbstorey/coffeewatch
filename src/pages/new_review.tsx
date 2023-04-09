@@ -4,6 +4,7 @@ import Layout from "../UI/Layout";
 import {addDoc, collection, DocumentData} from 'firebase/firestore'
 
 import { db } from "../../firebaseConfig"
+import {redirect} from "next/navigation";
 
 const dbInstance = collection(db, 'reviews')
 
@@ -22,7 +23,7 @@ const Page: NextPageWithLayout = () => {
         ...inputs as DocumentData,
         }).then(() => {
             setInputs(() => (initialState))
-            alert("Review submitted!")
+            redirect("/")
         })
     }
     const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) : void => {
