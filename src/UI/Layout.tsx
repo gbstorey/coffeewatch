@@ -1,5 +1,5 @@
-import Navbar from "@/UI/Navbar";
-import Footer from "@/UI/Footer";
+import Navbar from "../UI/Navbar";
+import Footer from "../UI/Footer";
 import React from "react";
 
 type Props = {

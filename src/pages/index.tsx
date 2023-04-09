@@ -1,5 +1,5 @@
 import type {ReactElement} from "react";
-import {NextPageWithLayout} from "@/pages/_app";
+import {NextPageWithLayout} from "./_app";
 import Layout from "@/UI/Layout";
 import Card from "@/UI/Card";
 import { collection, getDocs } from 'firebase/firestore'

@@ -1,6 +1,6 @@
-import {NextPageWithLayout} from "@/pages/_app";
+import {NextPageWithLayout} from "./_app";
 import {ReactElement, useState} from "react";
-import Layout from "@/UI/Layout";
+import Layout from "../UI/Layout";
 import {addDoc, collection, DocumentData} from 'firebase/firestore'
 
 import { db } from "../../firebaseConfig"
