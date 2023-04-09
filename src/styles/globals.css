@@ -21,7 +21,7 @@ body {
 
 input::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background-color: #4F200D;
+    background-color: #000;
     width: 18px;
     height: 18px;
     border-radius: 10px;
