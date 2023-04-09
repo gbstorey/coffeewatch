@@ -4,10 +4,16 @@ import Layout from "@/UI/Layout";
 import Card from "@/UI/Card";
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from "../../firebaseConfig"
+import {InferGetStaticPropsType} from "next";
 
 const dbInstance = collection(db, 'reviews')
 
-const Page: NextPageWithLayout = ({reviews}:any) => {
+interface Review {
+    name: string, desc: string, numStars: number, acidity: number, aroma: number, body: number, flavor: number,
+    sweetness: number, timestamp: number, id: string
+}
+
+const Page: NextPageWithLayout = ({reviews}:InferGetStaticPropsType<typeof getStaticProps>) => {
     return (
         <div className={"h-screen text-center text-2xl px-3"}>
             <h2 className={"font-semibold text-cw_brown py-4"}>
@@ -29,7 +35,7 @@ const Page: NextPageWithLayout = ({reviews}:any) => {
 export async function getStaticProps() {
     return await getDocs(dbInstance).then((data) => {
         const reviews = data.docs.map(item => {
-            return {...item.data(), id: item.id}
+            return {...item.data(), id: item.id} as Review[]
         })
         return {
             props: {
