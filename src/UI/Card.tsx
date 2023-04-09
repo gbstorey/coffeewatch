@@ -8,10 +8,6 @@ interface Review {
 
 const Card : React.FC<Review> = (props: Review) => {
     const stars = Array.from({length: props.numStars}, (v, i) => i)
-    const date = new Date(props.timestamp)
-    const formatted_date = date.toLocaleString('default', {
-        month: 'long', day:'numeric', year: "numeric"
-    })
     return (
         <article className={"max-w-3xl m-auto border border-black bg-white rounded my-4 text-left p-2 drop-shadow-xl"}>
             <div className={"flex justify-between"}>
@@ -25,7 +21,7 @@ const Card : React.FC<Review> = (props: Review) => {
                     {stars.map((item, num) => {
                         return <StarSVG width={30} key={num} className={"inline transform -translate-y-1"}/>
                     })} <br/>
-                    <span>{formatted_date}</span>
+                    <span>{props.timestamp}</span>
                 </div>
             </div>
             <div className={"flex justify-between text-sm font-semibold w-2/3"}>

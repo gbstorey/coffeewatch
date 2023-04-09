@@ -8,12 +8,15 @@ import { db } from "../../firebaseConfig"
 const dbInstance = collection(db, 'reviews')
 
 const Page: NextPageWithLayout = () => {
+    const formatted_date = new Date().toLocaleString('default', {
+        month: 'long', day:'numeric', year: "numeric"
+    })
     const initialState = {
-        name: '', desc: '', numStars: 5, acidity: 5, aroma: 5, body: 5, flavor: 5, sweetness: 5, timestamp: Date.now()
+        name: '', desc: '', numStars: 5, acidity: 5, aroma: 5, body: 5, flavor: 5, sweetness: 5, timestamp: formatted_date
     }
     const [inputs, setInputs] = useState(initialState);
     const submissionHandler = (e: React.SyntheticEvent) => {
-        setInputs(values => ({...values, timestamp: Date.now()}))
+        setInputs(values => ({...values}))
         e.preventDefault()
         addDoc(dbInstance, {
         ...inputs as DocumentData,
