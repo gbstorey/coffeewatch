@@ -4,7 +4,7 @@ import Layout from "../UI/Layout";
 import Card from "../UI/Card";
 import {collection, getDocs} from 'firebase/firestore'
 import { db } from "../../firebaseConfig"
-import {GetStaticProps} from "next";
+import {GetServerSideProps} from "next";
 
 const dbInstance = collection(db, 'reviews')
 
@@ -37,7 +37,7 @@ const Page: NextPageWithLayout<ReviewArray> = ({reviews}:ReviewArray) => {
     )
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
     return await getDocs(dbInstance).then((data) => {
         const reviews = data.docs.map(item => {
             return {...item.data(), id: item.id}
