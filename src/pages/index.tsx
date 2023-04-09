@@ -1,7 +1,7 @@
 import type {ReactElement} from "react";
 import {NextPageWithLayout} from "./_app";
-import Layout from "../ui/Layout";
-import Card from "../ui/Card";
+import Layout from "../UI/Layout";
+import Card from "../UI/Card";
 import {collection, getDocs} from 'firebase/firestore'
 import { db } from "../../firebaseConfig"
 import {GetStaticProps} from "next";

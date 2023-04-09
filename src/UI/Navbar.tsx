@@ -1,6 +1,6 @@
 import Link from "next/link";
-import LogoSVG from "../assets/LogoSVG";
-import HamburgerSVG from "../assets/HamburgerSVG";
+import LogoSVG from "@/assets/LogoSVG";
+import HamburgerSVG from "@/assets/HamburgerSVG";
 import * as React from "react";
 import {useState} from "react";
 

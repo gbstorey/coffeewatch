@@ -1,4 +1,4 @@
-import StarSVG from "../assets/StarSVG";
+import StarSVG from "@/assets/StarSVG";
 import React from "react";
 
 interface Review {
