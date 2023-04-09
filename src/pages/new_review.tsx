@@ -1,5 +1,5 @@
 import {NextPageWithLayout} from "./_app";
-import React, {ReactElement, useState} from "react";
+import React, {ReactElement, SyntheticEvent, useState} from "react";
 import Layout from "../UI/Layout";
 import {addDoc, collection, DocumentData} from 'firebase/firestore'
 
@@ -22,9 +22,14 @@ const Page: NextPageWithLayout = () => {
             alert("Review submitted!")
         })
     }
-    const changeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-        const name = e.currentTarget.name;
-        const value = e.currentTarget.value;
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) : void => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+    const textAreaChangeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
+        const name = event.target.name
+        const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
     }
     return (
@@ -39,7 +44,7 @@ const Page: NextPageWithLayout = () => {
                 <label className={"block py-2"} htmlFor={"desc"}>
                     Your Thoughts
                 </label>
-                <textarea name={"desc"} placeholder={"Write your review here!"} onChange={changeHandler} value={inputs.desc}
+                <textarea name={"desc"} placeholder={"Write your review here!"} onChange={textAreaChangeHandler} value={inputs.desc}
                           className={"block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"}
                 />
                 <label className={"block py-2"} htmlFor={"acidity"}>
