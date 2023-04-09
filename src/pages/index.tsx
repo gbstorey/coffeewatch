@@ -7,7 +7,12 @@ import { db } from "../../firebaseConfig"
 
 const dbInstance = collection(db, 'reviews')
 
-const Page: NextPageWithLayout = ({reviews}) => {
+interface Review {
+    name: string, desc: string, numStars: number, acidity: number, aroma: number, body: number, flavor: number,
+    sweetness: number, timestamp: number, id: string
+}
+
+const Page: NextPageWithLayout = ({reviews}:Review[]) => {
     return (
         <div className={"h-screen text-center text-2xl px-3"}>
             <h2 className={"font-semibold text-cw_brown py-4"}>
